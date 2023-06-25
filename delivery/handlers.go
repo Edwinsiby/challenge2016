@@ -51,14 +51,12 @@ func AddContributor(c *gin.Context) {
 //	@Success		200	{string}	success	massage
 //	@Router			/locations [get]
 func GetLocations(c *gin.Context) {
-	// using limit to read data from .csv file
+	// form values as input limit to read data from .csv file
 	limitStr := c.Request.FormValue("limit")
 	limit, err := strconv.Atoi(limitStr)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "string conversion failed"})
 	}
-
-	// as per the limit the retrived data is stored in a slice and returned
 
 	locations, err := repo.GetLocationsByLimit(limit)
 	if err != nil {
@@ -115,6 +113,7 @@ func SetExludedLocations(c *gin.Context) {
 //	@Success		200	{string}	success	massage
 //	@Router			/setinludedlocations [post]
 func SetIncludedLocations(c *gin.Context) {
+	// form values as input
 	startStr := c.Request.FormValue("start")
 	start, err := strconv.Atoi(startStr)
 	if err != nil {
@@ -154,6 +153,7 @@ func CheckPermission(c *gin.Context) {
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "string conversion failed"})
 	}
+	// form values as input
 	countryName := c.Request.FormValue("country")
 	provinceName := c.Request.FormValue("province")
 	cityName := c.Request.FormValue("city")
