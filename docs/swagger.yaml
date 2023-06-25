@@ -1,0 +1,94 @@
+basePath: /
+host: localhost:8085
+info:
+  contact: {}
+  description: API for real image challenge
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Real Image 2016
+  version: "1.0"
+paths:
+  /addcontributer:
+    post:
+      consumes:
+      - multipart/form-data
+      description: adding contributor with specific locations
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: adding contributer
+      tags:
+      - Contributor
+  /checkpermission:
+    get:
+      consumes:
+      - multipart/form-data
+      description: reading and checking included and exluded locations to the contributor
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: checking persmission
+      tags:
+      - Locations
+  /locations:
+    get:
+      consumes:
+      - multipart/form-data
+      description: reading locations with respect to the limit
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: reading locations form .csv file
+      tags:
+      - Locations
+  /setexludedlocations:
+    post:
+      consumes:
+      - multipart/form-data
+      description: reading and setting excluded locations to the contributor
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: reading and setting locations form .csv file
+      tags:
+      - Locations
+  /setinludedlocations:
+    post:
+      consumes:
+      - multipart/form-data
+      description: reading and setting included locations to the contributor
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: reading and setting locations form .csv file
+      tags:
+      - Locations
+schemes:
+- http
+securityDefinitions:
+  JWT:
+    in: header
+    name: token
+    type: apiKey
+swagger: "2.0"
